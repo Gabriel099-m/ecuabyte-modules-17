@@ -27,6 +27,10 @@ contenido en **español (es_EC), inglés (en_US) y portugués (pt_PT)**.
     mediante un parche de modelo.
   - Campo **Compañía** marcado como opcional y a ancho completo.
   - Formulario de dirección en **2 columnas** (1 columna en pantallas < 768px).
+- **Filtro de errores de extensiones del navegador**: evita que Odoo muestre el
+  diálogo *"Odoo Client Error"* cuando el rechazo de promesa proviene de una
+  extensión del navegador (p. ej. *"Could not establish connection. Receiving
+  end does not exist."*). Los errores reales de Odoo se siguen mostrando.
 - **Dependencias:** `website`, `website_sale`, `l10n_ec_website_sale`.
 
 ## Instalación
