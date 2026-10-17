@@ -13,7 +13,21 @@ despublicar productos en la tienda online (`/shop`).
 - **Dependencias:** `product`, `website_sale`.
 
 ### `ecuabyte_website_custom`
-Personalización del sitio web (home, tickets, formularios) para Ecuabyte.
+Personalización reproducible del sitio web (home, tickets y checkout), con
+contenido en **español (es_EC), inglés (en_US) y portugués (pt_PT)**.
+
+- **Home** (url `/`): contenido ES / EN / PT.
+- **Formulario de ticket** (`website_helpdesk.ticket_submit_form`): etiquetas
+  ES / EN / PT.
+- **Checkout** (`/shop/address`):
+  - Tipos de identificación del Ecuador (**RUC, Cédula, Pasaporte**) traducidos
+    a ES / EN / PT. Se ocultan los tipos genéricos *VAT*, *Passport* y
+    *Foreign ID*.
+  - Activa el tipo `l10n_ec.ec_passport` (Pasaporte) y aplica las traducciones
+    mediante un parche de modelo.
+  - Campo **Compañía** marcado como opcional y a ancho completo.
+  - Formulario de dirección en **2 columnas** (1 columna en pantallas < 768px).
+- **Dependencias:** `website`, `website_sale`, `l10n_ec_website_sale`.
 
 ## Instalación
 
@@ -21,7 +35,11 @@ Copiar la carpeta del módulo dentro del `addons_path` de Odoo y activar el
 modo desarrollador, luego:
 
 ```bash
-odoo-bin -c odoo.conf -d <base_de_datos> -i ecuabyte_inventory_web --stop-after-init
+odoo-bin -c odoo.conf -d <base_de_datos> -i ecuabyte_inventory_web,ecuabyte_website_custom --stop-after-init
 ```
 
 O desde la interfaz en **Aplicaciones → Actualizar lista de aplicaciones**.
+
+> Nota: el módulo `ecuabyte_website_custom` requiere los idiomas `es_EC` y
+> `pt_PT` activos en la base de datos y en el sitio web para mostrar el
+> contenido y las traducciones del checkout.

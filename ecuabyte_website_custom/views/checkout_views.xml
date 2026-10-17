@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Tipos de identificacion del checkout:
+        mostrar unicamente los de Ecuador (country_id definido), evitando los
+        genericos "VAT", "Passport" y "Foreign ID" que aparecen en ingles.
+    -->
+    <template id="partner_info_ec_only" inherit_id="l10n_ec_website_sale.partner_info" name="Ecuabyte: solo tipos de identificacion EC">
+        <xpath expr="//t[@t-foreach='identification_types or []']" position="attributes">
+            <attribute name="t-foreach">identification_types.filtered('country_id') or []</attribute>
+        </xpath>
+    </template>
+
+
+    <!--
+        Checkout en 2 columnas y "Company Name" a ancho completo:
+        se resuelve por CSS con :has() sobre el input company_name
+        (ver ecuabyte_checkout.css). No se marca clase estatica porque
+        QWeb descarta 'class' cuando el nodo usa t-attf-class.
+    -->
+
+</odoo>

@@ -1,0 +1,31 @@
+/* Ecuabyte - formulario de direccion del checkout en 2 columnas */
+
+.o_wsale_address_fill form.checkout_autoformat > .row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1rem;
+}
+
+/* Los espaciadores no ocupan celda */
+.o_wsale_address_fill form.checkout_autoformat > .row > .w-100,
+.o_wsale_address_fill form.checkout_autoformat > .row > .clearfix {
+    display: none;
+}
+
+/* Campos a ancho completo */
+.o_wsale_address_fill form.checkout_autoformat > .row > [class*="col-12"],
+.o_wsale_address_fill form.checkout_autoformat > .row > [class*="col-lg-12"] {
+    grid-column: 1 / -1;
+}
+
+/* El campo "Nombre de la empresa" a ancho completo */
+.o_wsale_address_fill form.checkout_autoformat > .row > div:has(> input[name="company_name"]) {
+    grid-column: 1 / -1;
+}
+
+/* En moviles, una sola columna */
+@media (max-width: 767.98px) {
+    .o_wsale_address_fill form.checkout_autoformat > .row {
+        grid-template-columns: 1fr;
+    }
+}
